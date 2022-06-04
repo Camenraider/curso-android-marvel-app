@@ -1,3 +1,7 @@
 package com.trainee.core.data.network.response
 
-data class CharacterResponse()
+data class CharacterResponse(
+    val id: String,
+    val name: String,
+    val thumbnail: ThumbnailResponse
+)
