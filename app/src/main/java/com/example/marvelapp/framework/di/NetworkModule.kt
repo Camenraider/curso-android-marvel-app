@@ -31,7 +31,7 @@ object NetworkModule {
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
-        return OkHttpClient().newBuilder()
+        return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .readTimeout(15,TimeUnit.SECONDS)
             .connectTimeout(15,TimeUnit.SECONDS)
@@ -49,7 +49,7 @@ object NetworkModule {
         converterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://gateway.marvel.com:443/v1/public/")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory).build()
     }
