@@ -1,4 +1,4 @@
-package com.trainee.core.data.network.interceptor
+package com.example.marvelapp.framework.network.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -31,11 +31,13 @@ class AuthorizationInterceptor(
                 .build()
         )
     }
+
     @Suppress("MagicNumber")
     private fun String.md5(): String {
         val md = MessageDigest.getInstance("MD5")
         return BigInteger(1,md.digest(toByteArray())).toString(16).padStart(32, '0')
     }
+
     companion object {
         private const val QUERY_PARAMETER = "ts"
         private const val QUERY_PARAMETER_API_KEY = "apikey"
