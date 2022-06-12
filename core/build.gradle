@@ -31,5 +31,6 @@ dependencies {
     implementation "java.inject:java.inject:1"
 
     // Courotines core
-    api "org.jetbrains.kotlinx:kotlinx-courotines-core:$coroutines_version"
+    def coroutines_version = "1.5.1"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 }
