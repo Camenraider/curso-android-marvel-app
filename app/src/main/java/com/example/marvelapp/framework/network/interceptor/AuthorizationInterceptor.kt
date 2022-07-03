@@ -17,8 +17,8 @@ class AuthorizationInterceptor(
         val request = chain.request()
         val requestUrl = request.url
 
-        val ts = (calendar.timeInMillis / 1000).toString() // Time in seconds
-        val hash = "$ts$privateKey$publicKey"
+        val ts = (calendar.timeInMillis / 1000L).toString() // Time in seconds
+        val hash = "$ts$privateKey$publicKey".md5()
         val newUrl = requestUrl.newBuilder()
             .addQueryParameter(QUERY_PARAMETER, ts)
             .addQueryParameter(QUERY_PARAMETER_API_KEY, publicKey)
@@ -33,7 +33,7 @@ class AuthorizationInterceptor(
     }
 
     @Suppress("MagicNumber")
-    private fun String.md5(): String {
+    fun String.md5(): String {
         val md = MessageDigest.getInstance("MD5")
         return BigInteger(1,md.digest(toByteArray())).toString(16).padStart(32, '0')
     }

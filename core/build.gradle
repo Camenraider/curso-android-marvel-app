@@ -28,7 +28,7 @@ dependencies {
     implementation "androidx.paging:paging-common:$paging_version"
 
     // Java Inject
-    implementation "java.inject:java.inject:1"
+    implementation 'javax.inject:javax.inject:1'
 
     // Courotines core
     def coroutines_version = "1.5.1"

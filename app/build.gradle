@@ -27,8 +27,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // should correspond to key/value pairs inside the file
-        buildConfigField "String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY']
-        buildConfigField "String", "PRIVATE_KEY", apikeyProperties['PRIVATE_KEY']
+        buildConfigField ("String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY'])
+        buildConfigField ("String", "PRIVATE_KEY", apikeyProperties['PRIVATE_KEY'])
         buildConfigField "String", "BASE_URL", '"https://gateway.marvel.com:443/v1/public/"'
     }
 
@@ -94,6 +94,7 @@ dependencies {
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
 
     // Room
     def room_version = "2.3.0"

@@ -2,6 +2,7 @@ package com.example.marvelapp.framework.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.trainee.core.domain.model.Character
 import com.example.marvelapp.framework.network.response.DataWrapperResponse
 import com.example.marvelapp.framework.network.response.toCharacterModel
 import com.trainee.core.data.repository.CharactersRemoteDataSource
@@ -11,8 +12,9 @@ class CharactersPagingSource(
     private val query : String
 ) : PagingSource<Int, Character>() {
 
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
-        try {
+        return try {
             val offset = params.key ?: 0
 
             val queries = hashMapOf(
@@ -35,7 +37,7 @@ class CharactersPagingSource(
                     responseOffset + LIMIT
                 } else null
             )
-
+            // ignorando erro com anotacao, muito generico.
         } catch (exception: Exception){
             LoadResult.Error(exception)
         }
